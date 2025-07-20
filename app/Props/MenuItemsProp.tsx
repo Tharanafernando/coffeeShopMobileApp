@@ -25,9 +25,9 @@ const MenuItemsProp = ({value,image,price}:{value:string , image:string,price:Bi
   return (
     <PaperProvider>
         <View style={style.container}>
-          <Image source={image} style={style.imageContainer}/>
+          <Image source={resolvedImage} style={style.imageContainer}/>
           <Text style={style.itemName}>{value}</Text>
-          <Text>{price}</Text>
+          <Text>Price: {`$ ${price}`}</Text>
          <Button
             style={style.button}
             mode="contained"
