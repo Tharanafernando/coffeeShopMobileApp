@@ -2,7 +2,6 @@ import { View, Text,StyleSheet,Image, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import { useLocalSearchParams } from 'expo-router'
 import { Dropdown } from 'react-native-element-dropdown'
-import { Label } from '@react-navigation/elements'
 import { PaperProvider,Button } from 'react-native-paper'
 const Cart = () => {
   const {value,image,price} = useLocalSearchParams();
@@ -35,8 +34,6 @@ const Cart = () => {
   let totalPrice = unitPrice * selectedValue!;
   return (
     <PaperProvider>
-
-    
     <View style={style.container}>
       {/* <Image source={{uri:image as string}} style={style.image}/> */}
        <Image source={resolvedImage} style={style.image} />
