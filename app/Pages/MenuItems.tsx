@@ -88,19 +88,18 @@ const MenuItems = () => {
   const checkIndex = (index: number) =>{
     let Items: any[] =[]
   if(index === 1){
-    console.log("Index is: ",index);
     Items = [
-      {key:1,value:"Espresso",image:require('@/assets/images/CoffeeImages/Espresso.jpeg')},
-      {key:2,value:"Americano",image:require('@/assets/images/CoffeeImages/americano-coffee.jpg')},
-      {key:3,value:"Latte",image:require('@/assets/images/CoffeeImages/Latte.jpg')},
-      {key:4,value:"Cappuccino",image:require('@/assets/images/CoffeeImages/Cappuccino.jpg')},
-      {key:5,value:"Flat White",image:require('@/assets/images/CoffeeImages/Flat White.jpg')},
-      {key:6,value:"Macchiato",image:require('@/assets/images/CoffeeImages/Macchiato.jpg')},
-      {key:7,value:"Mocha",image:require('@/assets/images/CoffeeImages/MochaIced.jpg')},
-      {key:8,value:"Cold Brew",image:require('@/assets/images/CoffeeImages/Cold Brew.jpg')},
-      {key:9,value:"Iced Coffee",image:require('@/assets/images/CoffeeImages/Iced Coffee.jpg')},
-      {key:10,value:"Nitro Coffee",image:require('@/assets/images/CoffeeImages/Nitro Coffee.jpg')},
-      {key:11,value:"Affogato",image:require('@/assets/images/CoffeeImages/Affogato.jpg')},
+      { key: 1, value: 'Espresso', image: 'espresso',price:10.00 },
+        { key: 2, value: 'Americano', image: 'americano',price:10.00 },
+        { key: 3, value: 'Latte', image: 'latte',price:10.00 },
+        { key: 4, value: 'Cappuccino', image: 'cappuccino',price:10.00 },
+        { key: 5, value: 'Flat White', image: 'flat_white' ,price:10.00},
+        { key: 6, value: 'Macchiato', image: 'macchiato',price:10.00 },
+        { key: 7, value: 'Mocha', image: 'mocha',price:10.00 },
+        { key: 8, value: 'Cold Brew', image: 'cold_brew',price:10.00 },
+        { key: 9, value: 'Iced Coffee', image: 'iced_coffee',price:10.00 },
+        { key: 10, value: 'Nitro Coffee', image: 'nitro_coffee',price:10.00 },
+        { key: 11, value: 'Affogato', image: 'affogato',price:10.00 },
 
     ];
   }
@@ -113,7 +112,7 @@ const MenuItems = () => {
       {key:5,value:"Matcha Latte"},
       {key:6,value:"Iced Tea"},
     ];
-    console.log("Index is: ",index);
+    
   }
   else if(index === 3){
     Items = [
@@ -123,7 +122,6 @@ const MenuItems = () => {
       {key:4,value:"Bottled Water"},
       {key:5,value:"Soft Drinks"},
     ]
-    console.log("Index is: ",index);
   }
   else if(index === 4){
     Items = [
@@ -138,7 +136,6 @@ const MenuItems = () => {
       {key:9,value:"Granola Bars"},
     ]
     
-    console.log("Index is: ",index);
   }
   else if(index === 5){
     Items = [
@@ -148,9 +145,6 @@ const MenuItems = () => {
       {key:4,value:"Quiche"},
       {key:5,value:"Toasties"},
     ]
-
-
-    console.log("Index is: ",index);
   }
   else{
     return "There is nothing here";
@@ -163,7 +157,7 @@ const MenuItems = () => {
     <ScrollView style={style.scrollViewContainer}>
       <View>
       {items.map(item => (
-         <MenuItemsProp key={item.key} value={item.value} image={item.image}/>
+         <MenuItemsProp key={item.key} value={item.value} image={item.image} price={item.price}/>
       ))}
       </View>
     </ScrollView>
