@@ -1,9 +1,9 @@
-import { View, Text,StyleSheet,Image } from 'react-native'
+import { View, Text,StyleSheet,Image, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import { useLocalSearchParams } from 'expo-router'
 import { Dropdown } from 'react-native-element-dropdown'
 import { Label } from '@react-navigation/elements'
-
+import { PaperProvider,Button } from 'react-native-paper'
 const Cart = () => {
   const {value,image,price} = useLocalSearchParams();
   const imageMap: Record<string, any> = {
@@ -34,6 +34,9 @@ const Cart = () => {
   const unitPrice = 10;
   let totalPrice = unitPrice * selectedValue!;
   return (
+    <PaperProvider>
+
+    
     <View style={style.container}>
       {/* <Image source={{uri:image as string}} style={style.image}/> */}
        <Image source={resolvedImage} style={style.image} />
@@ -41,14 +44,14 @@ const Cart = () => {
         <Text style={style.topicText}>{value}</Text>
         <Text>{price}</Text>
         <View style={style.selectDropDown}>
-              <Text>
+              <Text style={style.labelText}>
                 Quantity:
               </Text>
               <View style={style.pickerStyles}>
                   <Dropdown
                     search = {true}
                     data={data}
-                    placeholder='quantity'
+                    placeholder='0'
                     labelField="label"
                     valueField='value'
                     value={selectedValue}
@@ -58,31 +61,35 @@ const Cart = () => {
                     selectedTextStyle={{paddingLeft:20}}
                   />
               </View>
-              <View>
-                <Text style={{marginTop:20}}>
-                Unit Price: 
-                
-              </Text>
-              <Text style={{textAlign:'left',marginLeft:20}}> {unitPrice}</Text>
+              <View style={{marginTop:20, flexDirection:'row',justifyContent: 'space-between',width:200}}>
+                <Text style={style.labelText}>Unit Price:</Text>
+                <Text style={style.valueText}>{unitPrice}</Text>
+             
+              
               </View>
-              
-              <Text>
-                Total Amount: 
-                
-              </Text>
-              <Text style={{marginLeft:50}} >{totalPrice}</Text>
+              <View style={{ marginTop: 20, flexDirection: 'row', justifyContent: 'space-between', width: 200 }}>
+                <Text style={style.labelText}>Total Amount:</Text>
+                <Text style={style.valueText}>{totalPrice || 0}</Text>
+              </View>
 
-            
+              <Button
+               style={style.buttons}
+               mode='contained'
+              >
+                Add to cart
+              </Button>
 
-              
-              
+              <Button
+                style={style.buttons}
+                mode='contained'
+              >
+                Buy More
+              </Button>    
         </View>
-         
-        
-        
        </View>
        
     </View>
+    </PaperProvider>
   )
   
 }
@@ -99,8 +106,14 @@ const style = StyleSheet.create(
     selectDropDown:{
        marginTop:10,
        textAlign:'center',
-       alignContent:'center'
+       alignContent:'center',
+       fontSize:70
        
+    },
+
+    labelText:{
+      fontSize:20,
+      fontWeight:'300'
     },
 
     container:{
@@ -126,7 +139,17 @@ const style = StyleSheet.create(
       borderRadius:30,
       borderColor:"black",
       marginTop:10
+    },
+    valueText: {
+      fontSize: 20,
+      fontWeight: '400',
+      textAlign: 'left',
+    },
+    buttons:{ 
+      alignItems:'center',
+      marginTop:20,
+     
+      
     }
-    
   }
 )
